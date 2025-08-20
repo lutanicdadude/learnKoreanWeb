@@ -1,0 +1,27 @@
+{
+  "name": "learnkoreanweb",
+  "version": "1.0.0",
+  "description": "Force to learn korean",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lutanicdadude/learnKoreanWeb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lutanicdadude/learnKoreanWeb/issues"
+  },
+  "homepage": "https://github.com/lutanicdadude/learnKoreanWeb#readme",
+  "dependencies": {
+    "@prisma/client": "^6.14.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "prisma": "^6.14.0",
+    "prisma-case-format": "^2.2.1"
+  }
+}
