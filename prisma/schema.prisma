@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -18,6 +17,7 @@ model stored_words {
   id        Int      @id @default(autoincrement())
   kor_word  String
   eng_word  String
+  category  String
   fileUrl   String
   createdAt DateTime @default(now())
 }
