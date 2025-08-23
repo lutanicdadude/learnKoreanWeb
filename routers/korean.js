@@ -1,7 +1,7 @@
 const express = require('express');
-const membersController = require('../controllers/korean_controller');
+const korean_controller = require('../controllers/korean_controller');
 const router = express.Router();
 
-// router.post("/login", membersController.login);
+router.post("/addWord", korean_controller.createStoredWord, korean_controller.createTTS);
 
 module.exports = router;

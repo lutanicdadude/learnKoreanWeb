@@ -18,6 +18,17 @@ model stored_words {
   kor_word  String
   eng_word  String
   category  String
-  fileUrl   String
   createdAt DateTime @default(now())
+
+  audios Audio[]
+}
+
+model Audio {
+  id        Int      @id @default(autoincrement())
+  wordId    Int
+  voice     String
+  audioData Bytes?
+  createdAt DateTime @default(now())
+
+  word stored_words @relation(fields: [wordId], references: [id])
 }
