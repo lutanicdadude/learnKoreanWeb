@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script defer src="list.js"></script>
 </head>
 
 <body class="bg-light">
@@ -27,12 +26,17 @@
     <div class="container py-5">
         <h1 class="text-center mb-4">Stored Words</h1>
 
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control"
+                placeholder="Search for a word, definition, or category...">
+        </div>
+
         <!-- Table of Words -->
         <table class="table table-bordered shadow">
             <thead class="table-light">
                 <tr>
                     <th>Word</th>
-                    <th>Correct Answer</th>
+                    <th>Definition</th>
                     <th>Category</th>
                 </tr>
             </thead>
@@ -40,5 +44,6 @@
         </table>
     </div>
 </body>
+<script src="./index.js"></script>
 
 </html>

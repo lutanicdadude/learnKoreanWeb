@@ -2,7 +2,6 @@ const { PrismaClient } = require('@prisma/client');
 const { exec } = require("child_process");
 const fs = require("fs");
 const prisma = new PrismaClient();
-let newWord;
 
 exports.createStoredWord = async (req, res) => {
     if (!req.body.kor_word || !req.body.eng_word || !req.body.category) {
@@ -29,6 +28,25 @@ exports.createStoredWord = async (req, res) => {
         });
     }
 }
+
+exports.getAllStoredWords = async (req, res) => {
+    try {
+        const words = await prisma.stored_words.findMany({
+            orderBy: {
+                id: 'asc'
+            },
+        });
+
+        return res.status(200).json(words);  // use .json() instead of .send()
+    } catch (error) {
+        console.error("Error fetching words:", error);
+        return res.status(400).json({
+            success: false,
+            message: `Unable to retrieve words.`
+        });
+    }
+};
+
 
 // CREATE
 exports.createTTS = async (req, res) => {
