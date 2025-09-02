@@ -47,6 +47,46 @@ exports.getAllStoredWords = async (req, res) => {
     }
 };
 
+exports.getQuizWord = async (req, res) => {
+    try {
+        const category = req.query.category; // get category from query string
+
+        const words = await prisma.stored_words.findMany({
+            where: category && category !== 'all' ? { category } : {},
+        });
+
+        // shuffle and take 5
+        const randomFive = words
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 5);
+
+        return res.status(200).json(randomFive);
+    } catch (error) {
+        console.error("Error fetching words:", error);
+        return res.status(400).json({
+            success: false,
+            message: "Unable to retrieve random words."
+        });
+    }
+};
+
+
+exports.getCategories = async (req, res) => {
+    try {
+        const categories = await prisma.stored_words.findMany({
+            distinct: ['category'],  // get only unique categories
+            select: { category: true } // only return category field
+        });
+
+        // Map to an array of strings
+        const categoryList = categories.map(c => c.category);
+
+        res.status(200).json(categoryList);
+    } catch (error) {
+        console.error("Error fetching categories:", error);
+        res.status(500).json({ success: false, message: "Unable to retrieve categories." });
+    }
+};
 
 // CREATE
 exports.createTTS = async (req, res) => {
